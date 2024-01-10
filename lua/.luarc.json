@@ -1,5 +1,7 @@
 {
     "diagnostics.globals": [
-        "vim"
+        "vim",
+        "map",
+        "buf_set_keymap"
     ]
 }

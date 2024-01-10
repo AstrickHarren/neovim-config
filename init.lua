@@ -1,5 +1,8 @@
 -- vim.cmd [[autocmd BufWritePost init.lua source %]]
 
+require("fns")
+vim.g.mapleader = " "
+
 ------------------- lazy nvim ---------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -14,8 +17,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("lazy").setup("plugins")
 require("settings")
 require("keybindings")
-require("lazy").setup("plugins")
 
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin-frappe")
