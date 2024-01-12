@@ -46,11 +46,16 @@ return {
       vim.g.rainbow_delimiters = { highlight = highlight }
 
       require("ibl").setup({
-        scope = { highlight = highlight, char = '▏'},
+        scope = { highlight = highlight, char = "▏" },
       })
 
       local hooks = require("ibl.hooks")
       hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     end,
+  },
+
+  {
+    "lukas-reineke/virt-column.nvim",
+    opts = { virtcolumn = "80,100", char = "▏" },
   },
 }

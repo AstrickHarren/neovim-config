@@ -6,9 +6,16 @@ return {
     keys = function()
       local builtin = require("telescope.builtin")
       return {
-        { "<leader>f", builtin.find_files,            desc = "Find files" },
-        { "<leader>s", builtin.live_grep,             desc = "Grep files " },
-        { "<leader>t", builtin.lsp_workspace_symbols, desc = "Symbol picker" },
+        { "<leader>f", builtin.find_files,                    desc = "Find files" },
+        { "<leader>s", builtin.live_grep,                     desc = "Grep files " },
+        { "<leader>t", builtin.lsp_workspace_symbols,         desc = "Workspace symbol picker" },
+        { "<leader>T", builtin.lsp_dynamic_workspace_symbols, desc = "All workspace symbol picker" },
+        { "<leader>o", builtin.treesitter,                    desc = "File symbol picker" },
+        { "<leader>P", builtin.diagnostics,                   desc = "Diagnostics" },
+        { "gd",        builtin.lsp_definitions,               desc = "Go to definitions" },
+        { "gr",        builtin.lsp_references,                desc = "Go to references" },
+        { "gI",        builtin.lsp_implementations,           desc = "Go to implementations" },
+        { "gt",        builtin.lsp_type_definitions,          desc = "Go to type definitions" },
       }
     end,
     opts = {
