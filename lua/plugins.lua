@@ -1,15 +1,9 @@
 return {
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "muniftanjim/nui.nvim" },
-	},
-
 	{ "windwp/nvim-autopairs", opts = {} },
 	{ "tpope/vim-surround" },
 	{ "wellle/targets.vim" },
 
-	{ "akinsho/toggleterm.nvim", opts = {} },
+	{ "akinsho/toggleterm.nvim", opts = { start_in_insert = true, persist_mode = false } },
 
 	{
 		"goolord/alpha-nvim",

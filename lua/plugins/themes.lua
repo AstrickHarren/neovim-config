@@ -9,7 +9,7 @@ return {
 				functions = { "bold" },
 				keywords = { "bold" },
 			},
-			integrations = { treesitter = true },
+			integrations = { treesitter = true, neotree = true },
 			custom_highlights = function(colors)
 				return {
 					-- ["@lsp.mod.mutable"] = { style = { "bold" } },
