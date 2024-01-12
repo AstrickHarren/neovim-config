@@ -1,7 +1,6 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    enabled = false,
     build = ":TSUpdate",
     keys = { { "<c-n>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" } },
     config = function()
