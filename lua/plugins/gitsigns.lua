@@ -7,6 +7,9 @@ return {
 		{ "<leader>gb", "<cmd>Gitsigns blame_line<cr>" },
 		{ "<leader>gs", "<cmd>Gitsigns stage_hunk<cr> " },
 		{ "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr> " },
+
+		{ "gn", "<cmd>Gitsigns next_hunk<cr>" },
+		{ "gN", "<cmd>Gitsigns prev_hunk<cr>" },
 	},
 	lazy = false,
 }

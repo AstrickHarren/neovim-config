@@ -1,58 +1,12 @@
--- Bubbles config for lualine
--- Author: lokesh-krishna
--- MIT license, see LICENSE for more details.
-
--- stylua: ignore
-local colors = {
-  blue   = '#80a0ff',
-  cyan   = '#79dac8',
-  black  = '#3B444B',
-  white  = '#c6c6c6',
-  red    = '#ff5189',
-  violet = '#d183e8',
-  grey   = '#303030',
-}
-
-local bubbles_theme = {
-	normal = {
-		a = { fg = colors.black, bg = colors.violet },
-		b = { fg = colors.white, bg = colors.grey },
-		c = { fg = colors.black, bg = colors.black },
-	},
-
-	insert = { a = { fg = colors.black, bg = colors.blue } },
-	visual = { a = { fg = colors.black, bg = colors.cyan } },
-	replace = { a = { fg = colors.black, bg = colors.red } },
-
-	inactive = {
-		a = { fg = colors.white, bg = colors.black },
-		b = { fg = colors.white, bg = colors.black },
-		c = { fg = colors.black, bg = colors.black },
-	},
-}
-
 local function copilot()
 	return require("copilot_status").status_string()
 end
 
 local opts = {
 	options = {
-		theme = bubbles_theme,
+		theme = "catppuccin",
 		component_separators = "|",
-		section_separators = { left = "", right = "" },
-	},
-	sections = {
-		lualine_a = {
-			{ "mode", separator = { left = "" }, right_padding = 2 },
-		},
-		lualine_b = { "filename", "branch", "diagnostics" },
-		lualine_c = { "fileformat" },
-
-		lualine_x = {},
-		lualine_y = { copilot, "filetype", "progress" },
-		lualine_z = {
-			{ "location", separator = { right = "" }, left_padding = 2 },
-		},
+		section_separators = { right = "", left = "" },
 	},
 	inactive_sections = {
 		lualine_a = { "filename" },
@@ -66,8 +20,61 @@ local opts = {
 	extensions = {},
 }
 
+local config = function()
+	local icons = require("nvim-nonicons")
+	local nonicons_extention = require("nvim-nonicons.extentions.lualine")
+
+	opts.sections = {
+		lualine_a = {
+			{
+				"mode",
+				fmt = nonicons_extention.mode.fmt,
+				padding = { right = 2 },
+			},
+		},
+		lualine_b = {
+			{
+				"filename",
+				symbols = {
+					modified = icons.get("dot-fill"),
+					readonly = icons.get("lock"),
+				},
+			},
+			{ "branch", icon = icons.get("git-compare") },
+		},
+		lualine_c = {
+			{
+				"diagnostics",
+				symbols = {
+					error = icons.get("x-circle"),
+					info = icons.get("info"),
+					warn = icons.get("alert"),
+					hint = icons.get("question"),
+				},
+			},
+		},
+
+		lualine_x = {
+			{
+				"diff",
+				symbols = {
+					added = icons.get("diff-added") .. " ",
+					modified = icons.get("diff-modified") .. " ",
+					removed = icons.get("diff-removed") .. " ",
+				},
+			},
+		},
+		lualine_y = { copilot, { "filetype", icon_only = true }, "progress" },
+		lualine_z = {
+			{ "location" },
+		},
+	}
+
+	require("lualine").setup(opts)
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = opts,
+	dependencies = { "nvim-tree/nvim-web-devicons", "yamatsum/nvim-nonicons" },
+	config = config,
 }

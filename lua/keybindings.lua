@@ -19,7 +19,7 @@ map("n", "<c-\\>", ":vs<cr>")
 map("n", "U", "<c-r>")
 
 map("t", "<c-j>", "<c-\\><c-n><cmd>ToggleTerm<cr>")
-map("n", "<c-j>", "<cmd>ToggleTerm<cr><esc>i")
+map("n", "<c-j>", "<cmd>ToggleTerm<cr><esc>")
 
 map("n", "<leader>L", "<cmd>Lazy<cr>")
 
@@ -27,3 +27,5 @@ map("n", "<leader>L", "<cmd>Lazy<cr>")
 -- map("v", "w", "vw")
 -- map("n", "b", "vb")
 -- map("v", "b", "vb")
+
+vim.cmd([[autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif]])
