@@ -23,15 +23,15 @@ return {
 				git_status = {
 					symbols = {
 						-- Change type
-						added = icons.get("diff-added"),
-						deleted = icons.get("diff-removed"),
-						modified = icons.get("diff-modified"),
-						renamed = icons.get("diff-renamed"),
+						added = "",
+						deleted = "",
+						modified = "",
+						renamed = "",
 
 						-- Status type
 						untracked = icons.get("unverified"),
 						ignored = icons.get("eye-closed"),
-						unstaged = icons.get("circle"),
+						unstaged = icons.get("verified"),
 						staged = icons.get("check-circle-fill"),
 						conflicted = icons.get("git-merge"),
 					},
