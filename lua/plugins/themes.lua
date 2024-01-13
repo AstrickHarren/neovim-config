@@ -18,6 +18,9 @@ return {
 					["@lsp.typemod.macro.defaultLibrary"] = { link = "@function.macro" },
 					NormalFloat = { bg = colors.none },
 					FloatBorder = { fg = colors.overlay0 },
+
+					-- Subtle parenthesis match highlighting
+					MatchParen = { fg = colors.none, bg = colors.none, style = { "underline" } },
 				}
 			end,
 		},

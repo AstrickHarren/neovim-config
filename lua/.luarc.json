@@ -3,5 +3,8 @@
         "vim",
         "map",
         "buf_set_keymap"
+    ],
+    "diagnostics.disable": [
+        "missing-fields"
     ]
 }

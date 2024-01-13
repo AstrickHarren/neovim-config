@@ -19,6 +19,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
+			require("neodev").setup({})
+
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lsp = require("lspconfig")
 			local servers = { "lua_ls", "rust_analyzer", "pest_ls" }

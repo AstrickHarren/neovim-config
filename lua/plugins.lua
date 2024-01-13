@@ -48,4 +48,7 @@ return {
 
     -- noh
     { "jesseleite/vim-noh" },
+
+    -- dev nvim lua
+    { "folke/neodev.nvim", opts = {}, dependencies = { 'nvim-cmp' } },
 }

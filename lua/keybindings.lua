@@ -23,9 +23,17 @@ map("n", "<c-j>", "<cmd>ToggleTerm<cr><esc>")
 
 map("n", "<leader>L", "<cmd>Lazy<cr>")
 
+vim.cmd("cnoremap <C-a> <Home>")
+vim.cmd("cnoremap <C-b> <Left>")
+vim.cmd("cnoremap <C-f> <Right>")
+vim.cmd("cnoremap <C-s> <c-f>")
+vim.cmd("cnoremap <M-b> <S-Left>")
+vim.cmd("cnoremap <M-f> <S-Right>")
+
 -- map("n", "w", "vw")
 -- map("v", "w", "vw")
 -- map("n", "b", "vb")
 -- map("v", "b", "vb")
 
-vim.cmd([[autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif]])
+vim.cmd([[autocmd BufEnter *.txt if &buftype == 'help' | silent! wincmd L | endif]])
+-- vim.cmd([[cnorea help vert help]])
