@@ -11,7 +11,7 @@ map("v", "gs", "_")
 map("v", "gl", "$")
 map("v", "ge", "G")
 
-map("n", "<c-s>", ":w<cr>")
+map("n", "<c-s>", "<cmd>silent w<cr>")
 map("n", "<c-w>", "<cmd>x<cr>")
 map("n", "q:", "<nop>")
 map("n", "<c-q>", ":qa<cr>")

@@ -36,6 +36,12 @@ return {
 						conflicted = icons.get("git-merge"),
 					},
 				},
+				icon = {
+					folder_closed = "",
+					folder_open = "",
+					folder_empty = "",
+					default = "",
+				},
 			},
 		})
 	end,

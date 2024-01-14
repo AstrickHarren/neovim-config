@@ -1,3 +1,35 @@
+local text_objs = {
+	f = "function",
+	a = "parameter",
+	n = "conditional",
+	l = "loop",
+	t = "class",
+	-- s = "scope",
+}
+
+local keymaps = {}
+for key, obj in pairs(text_objs) do
+	keymaps["a" .. key] = "@" .. obj .. ".outer"
+	keymaps["i" .. key] = "@" .. obj .. ".inner"
+end
+
+local move = {
+	enable = true,
+	set_jumps = true,
+	goto_next_start = {
+		["]f"] = "@function.outer",
+	},
+	goto_next_end = {},
+	goto_previous_start = {},
+	goto_previous_end = {},
+}
+for key, obj in pairs(text_objs) do
+	move.goto_previous_start["[" .. key] = "@" .. obj .. ".outer"
+	move.goto_next_start["]" .. key] = "@" .. obj .. ".outer"
+	move.goto_previous_end["[" .. key:upper()] = "@" .. obj .. ".outer"
+	move.goto_next_end["]" .. key:upper()] = "@" .. obj .. ".outer"
+end
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -24,61 +56,9 @@ return {
 					select = {
 						enable = true,
 						lookahead = true,
-						keymaps = {
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = "@class.inner",
-							["aa"] = "@parameter.outer",
-							["ia"] = "@parameter.inner",
-							["as"] = "@scope.outer",
-							["is"] = "@scope.inner",
-							["at"] = "@conditional.outer",
-							["it"] = "@conditional.inner",
-							["al"] = "@loop.outer",
-							["il"] = "@loop.inner",
-						},
+						keymaps = keymaps,
 					},
-
-					move = {
-						enable = true,
-						set_jumps = true,
-						goto_next_start = {
-							["]f"] = "@function.outer",
-							["]c"] = "@class.outer",
-							["]a"] = "@parameter.outer",
-							["]t"] = "@conditional.outer",
-							["]s"] = "@scope.outer",
-							["]l"] = "@loop.outer",
-						},
-
-						goto_next_end = {
-							["]F"] = "@function.outer",
-							["]C"] = "@class.outer",
-							["]A"] = "@parameter.outer",
-							["]T"] = "@conditional.outer",
-							["]S"] = "@scope.outer",
-							["]L"] = "@loop.outer",
-						},
-
-						goto_previous_start = {
-							["[f"] = "@function.outer",
-							["[c"] = "@class.outer",
-							["[a"] = "@parameter.outer",
-							["[t"] = "@conditional.outer",
-							["[s"] = "@scope.outer",
-							["[l"] = "@loop.outer",
-						},
-
-						goto_previous_end = {
-							["[F"] = "@function.outer",
-							["[C"] = "@class.outer",
-							["[A"] = "@parameter.outer",
-							["[T"] = "@conditional.outer",
-							["[S"] = "@scope.outer",
-							["[L"] = "@loop.outer",
-						},
-					},
+					move = move,
 				},
 			})
 

@@ -16,7 +16,10 @@ vim.opt.cursorline = true
 
 vim.opt.pumheight = 10
 vim.opt.pumwidth = 60
+
+-- Hide tab line and command/status line
 vim.opt.showtabline = 0
+-- vim.opt.cmdheight = 0
 
 -- Normal mode block, insert-like mode and command mode vertical line, replace-like mode underline
 vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"
