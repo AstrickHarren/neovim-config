@@ -2,9 +2,9 @@ return {
 	"sindrets/diffview.nvim",
 	opts = {
 		hooks = {
-			diff_buf_win_enter = function()
-				vim.opt_local.foldenable = false
-			end,
+			-- diff_buf_win_enter = function()
+			-- 	vim.opt_local.foldenable = false
+			-- end,
 		},
 	},
 	keys = {

@@ -35,7 +35,7 @@ return {
                         hints = { "underdashed" },
                     },
                     inlay_hints = {
-                        background = true,
+                        background = false,
                     },
                 },
             },

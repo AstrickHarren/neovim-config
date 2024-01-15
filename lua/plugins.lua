@@ -1,5 +1,4 @@
 return {
-	{ "windwp/nvim-autopairs", opts = {} },
 	{ "tpope/vim-surround" },
 	{ "wellle/targets.vim" },
 

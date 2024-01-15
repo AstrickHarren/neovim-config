@@ -55,7 +55,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require("neodev").setup({})
+            require("neodev").setup({
+                inlay_hints = { enabled = true },
+            })
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lsp = require("lspconfig")

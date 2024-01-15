@@ -28,3 +28,17 @@ lazy_map("gd", "telescope.builtin", "lsp_definitions", { desc = "Go to definitio
 map({ "n", "v" }, "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 
 -- vim.cmd([[cnorea help vert help]])
+
+-- LSP Inlay hints
+local function toggle_inlay_hint()
+	local buf = vim.api.nvim_get_current_buf()
+	local enabled = vim.lsp.inlay_hint.is_enabled(buf)
+	local n_attached_clients = #vim.lsp.get_clients({ bufnr = buf })
+	if n_attached_clients == 0 then
+		return
+	end
+	vim.lsp.inlay_hint.enable(buf, not enabled)
+end
+
+-- map({ "n", "v" }, "<leader>li", toggle_inlay_hint, { desc = "Toggle inlay hints" })
+map({ "i", "n", "v" }, "<c-i>", toggle_inlay_hint, { desc = "Toggle inlay hints" })
