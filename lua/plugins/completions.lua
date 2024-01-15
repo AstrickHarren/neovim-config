@@ -77,6 +77,10 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+
 				performance = {
 					-- max_view_entries = 5,
 				},
@@ -92,16 +96,16 @@ return {
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					["<cr>"] = cmp.mapping.confirm(),
+					-- ["<cr>"] = cmp.mapping.confirm(),
 					["<tab>"] = cmp.mapping.confirm({ select = true }),
 					-- ["<tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<s-tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+					-- ["<s-tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<c-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<c-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 				}),
 				sorting = { priority = 10 },
 				sources = cmp.config.sources({
-					{ name = "copilot", priority = 2 },
+					{ name = "copilot", priority = 2, max_item_count = 1 },
 					{ name = "nvim_lsp", priority = 10 },
 					-- { name = "luasnip" }, -- For luasnip users.
 				}, {

@@ -84,7 +84,7 @@ return {
             { "<leader>F",  vim.lsp.buf.format,         desc = "Format" },
             -- { "<c-i>", vim.lsp.inlay_hint.enable, desc = "Inlay hints" },
 
-            { "gD",         vim.lsp.buf.declaration,    desc = "Go to declaration" },
+            -- { "gD",         vim.lsp.buf.declaration,    desc = "Go to declaration" },
             -- { "gd",         vim.lsp.buf.definition,     desc = "Go to definition" },
             -- { "gI",         vim.lsp.buf.implementation,  desc = "Go to implementation" },
             -- { "gr",         vim.lsp.buf.references,      desc = "Go to references" },

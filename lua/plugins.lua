@@ -50,5 +50,5 @@ return {
     { "jesseleite/vim-noh" },
 
     -- dev nvim lua
-    { "folke/neodev.nvim", opts = {}, dependencies = { 'nvim-cmp' } },
+    { "folke/neodev.nvim", opts = {}, dependencies = { "nvim-cmp" } },
 }
