@@ -80,7 +80,7 @@ return {
 
         keys = {
             { "K",          vim.lsp.buf.hover,          desc = "Hover" },
-            { "<c-k>",      vim.lsp.buf.signature_help, desc = "Signature Help" },
+            { "<c-,>",      vim.lsp.buf.signature_help, desc = "Signature Help" },
             { "<leader>F",  vim.lsp.buf.format,         desc = "Format" },
             -- { "<c-i>", vim.lsp.inlay_hint.enable, desc = "Inlay hints" },
 

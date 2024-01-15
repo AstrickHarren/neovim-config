@@ -1,14 +1,18 @@
+local suggest = true
+local view_in_cmp = false
+
 return {
 	-- Copilots
 	{
 		"zbirenbaum/copilot.lua",
 		opts = {
 			suggestion = {
-				enabled = false,
-				auto_trigger = true,
+				enabled = true,
+				auto_trigger = suggest,
 				keymap = {
-					accept = "<tab>",
+					accept = "<c-f>",
 					accept_word = "<c-right>",
+					accept_line = "<c-down>",
 				},
 			},
 			panel = {
@@ -27,7 +31,7 @@ return {
 
 	{
 		"zbirenbaum/copilot-cmp",
-		-- enabled = false,
+		enabled = view_in_cmp,
 		config = function()
 			require("copilot_cmp").setup()
 		end,

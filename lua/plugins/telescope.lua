@@ -5,6 +5,7 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = function()
             local builtin = require("telescope.builtin")
+            local actions = require("telescope.actions")
             return {
                 { "<c-f>",      builtin.find_files,                    desc = "Find files" },
                 { "<c-g>",      builtin.live_grep,                     desc = "Find files" },
@@ -34,6 +35,8 @@ return {
                     i = {
                         ["<esc>"] = "close",
                         ["<c-cr>"] = "select_vertical",
+                        ['<c-j>'] = 'move_selection_next',
+                        ['<c-k>'] = 'move_selection_previous',
                     },
                 },
                 file_ignore_patterns = {

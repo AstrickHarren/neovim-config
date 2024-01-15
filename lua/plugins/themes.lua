@@ -17,7 +17,28 @@ return {
                 functions = { "bold" },
                 keywords = { "bold" },
             },
-            integrations = { treesitter = true, neotree = true },
+            integrations = {
+                treesitter = true,
+                neotree = true,
+                native_lsp = {
+                    enabled = true,
+                    virtual_text = {
+                        errors = {},
+                        hints = {},
+                        warnings = {},
+                        information = {},
+                    },
+                    underlines = {
+                        errors = { "underdouble" },
+                        warnings = { "underline" },
+                        information = { "underdashed" },
+                        hints = { "underdashed" },
+                    },
+                    inlay_hints = {
+                        background = true,
+                    },
+                },
+            },
             custom_highlights = function(colors)
                 local rainbow_colors = rainbows({
                     colors.yellow,

@@ -30,19 +30,19 @@ vim.opt.splitright = true
 local icons = require("nvim-nonicons")
 
 local signs = {
-    { name = "DiagnosticSignError", text = icons.get("x-circle") },
-    { name = "DiagnosticSignWarn",  text = icons.get("alert") },
-    { name = "DiagnosticSignHint",  text = icons.get("question") },
-    { name = "DiagnosticSignInfo",  text = icons.get("info") },
+	{ name = "DiagnosticSignError", text = icons.get("x-circle") },
+	{ name = "DiagnosticSignWarn", text = icons.get("alert") },
+	{ name = "DiagnosticSignHint", text = icons.get("question") },
+	{ name = "DiagnosticSignInfo", text = icons.get("info") },
 }
 
 for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
 vim.diagnostic.config({
-    underline = true,
-    severity_sort = true,
-    signs = true,
-    update_in_insert = false,
+	underline = true,
+	severity_sort = true,
+	signs = true,
+	update_in_insert = false,
 })
