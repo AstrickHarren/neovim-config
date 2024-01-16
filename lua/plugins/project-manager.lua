@@ -6,7 +6,7 @@ return {
                 "~/Repositories/*",
                 "~/.config/*",
             },
-            last_session_on_startup = false,
+            last_session_on_startup = true,
         },
         keys = {
             { "<leader>p", "<cmd>Telescope neovim-project discover<cr>" },

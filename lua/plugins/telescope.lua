@@ -41,6 +41,8 @@ return {
                 },
                 file_ignore_patterns = {
                     "lazy%-lock.json",
+                    "Cargo.lock",
+                    "*.lock", -- This doesn't work, why?
                 },
             },
         },

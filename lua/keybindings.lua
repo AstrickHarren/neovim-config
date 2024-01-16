@@ -7,11 +7,9 @@ map("n", "<c-s-j>", "<c-w>-", { desc = "Decrease terminal height" })
 map("t", "<c-s-j>", "<c-\\><c-n><c-w>-", { desc = "Decrease terminal height" })
 
 map("n", "<c-s>", "<cmd>silent w<cr>")
-map("n", "<c-w>", "<cmd>x<cr>")
-map("n", "q:", "<nop>")
-map("n", "<c-q>", ":qa<cr>")
-map("n", "<c-\\>", ":vs<cr>")
-map("n", "U", "<c-r>")
+map("n", "<c-q>", ":qa<cr>", { desc = "Quit all windows" })
+map("n", "<c-\\>", ":vs<cr>", { desc = "Split window vertically" })
+map("n", "U", "<c-r>", { desc = "Redo" })
 
 vim.cmd("cnoremap <C-a> <Home>")
 vim.cmd("cnoremap <C-b> <Left>")
@@ -31,13 +29,13 @@ map({ "n", "v" }, "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 
 -- LSP Inlay hints
 local function toggle_inlay_hint()
-	local buf = vim.api.nvim_get_current_buf()
-	local enabled = vim.lsp.inlay_hint.is_enabled(buf)
-	local n_attached_clients = #vim.lsp.get_clients({ bufnr = buf })
-	if n_attached_clients == 0 then
-		return
-	end
-	vim.lsp.inlay_hint.enable(buf, not enabled)
+    local buf = vim.api.nvim_get_current_buf()
+    local enabled = vim.lsp.inlay_hint.is_enabled(buf)
+    local n_attached_clients = #vim.lsp.get_clients({ bufnr = buf })
+    if n_attached_clients == 0 then
+        return
+    end
+    vim.lsp.inlay_hint.enable(buf, not enabled)
 end
 
 -- map({ "n", "v" }, "<leader>li", toggle_inlay_hint, { desc = "Toggle inlay hints" })
