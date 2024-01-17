@@ -44,9 +44,19 @@ return {
 					k = "Go to the up window",
 					j = "Go to the down window",
 				},
+				[","] = {
+					name = "+Preferences",
+					w = {
+						function()
+							vim.opt.list = not vim.opt.list:get()
+						end,
+						"Toggle whiteSpace visibility",
+					},
+				},
 			},
 
-			["<c-w>"] = { "<cmd>x<cr>", "Close window" },
+			-- ["<c-w>"] = { "<cmd>x<cr>", "Close window" },
+			["<c-w>"] = { close_window_checked_alpha, "Close window" },
 		})
 
 		wk.register({
@@ -61,15 +71,5 @@ return {
 				e = { "G", "Last non-blank character of line" },
 			},
 		})
-
-		-- wk.register({
-		-- 	mode = { "c" },
-		-- 	["<c-a>"] = { "<Home>", "Move to start of line" },
-		-- 	["<c-b>"] = { "<Left>", "Move left" },
-		-- 	["<c-f>"] = { "<Right>", "Move right" },
-		-- 	["<c-s>"] = { "<c-f>", "Move right" },
-		-- 	["<m-b>"] = { "<S-Left>", "Move left word" },
-		-- 	["<m-f>"] = { "<S-Right>", "Move right word" },
-		-- })
 	end,
 }
