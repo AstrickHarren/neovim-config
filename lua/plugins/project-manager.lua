@@ -9,7 +9,8 @@ return {
 			last_session_on_startup = false,
 		},
 		keys = {
-			{ "<leader>p", "<cmd>Telescope neovim-project discover<cr>" },
+			{ "<leader>p", "<cmd>Telescope neovim-project discover<cr>", desc = "Find project" },
+			{ "<c-p>",     "<cmd>Telescope neovim-project discover<cr>", desc = "Find project" },
 		},
 		init = function()
 			-- enable saving the state of plugins in the session

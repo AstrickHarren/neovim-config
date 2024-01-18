@@ -9,6 +9,7 @@ return {
 		config = function(_, opts)
 			local npairs = require("nvim-autopairs")
 			npairs.setup(opts)
+            if require('nvim-treesitter') then
 			local Rule = require("nvim-autopairs.rule")
 			local ts_conds = require("nvim-autopairs.ts-conds")
 
@@ -17,6 +18,7 @@ return {
 				ts_conds.is_endwise_node({ "line_comment" })
 			)
 			npairs.add_rule(rule)
+        end
 		end,
 	},
 }

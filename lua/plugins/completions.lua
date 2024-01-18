@@ -1,8 +1,6 @@
 return {
-	{
-		"hrsh7th/cmp-nvim-lsp",
-		opts = {},
-	},
+	{ "hrsh7th/cmp-nvim-lsp", opts = {} },
+	{ 'hrsh7th/cmp-path' },
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
@@ -105,8 +103,9 @@ return {
 				}),
 				sorting = { priority = 10 },
 				sources = cmp.config.sources({
-					{ name = "copilot", priority = 2, max_item_count = 1 },
+					{ name = "copilot",  priority = 2, max_item_count = 1 },
 					{ name = "nvim_lsp", priority = 10 },
+					{ name = 'path' },
 					-- { name = "luasnip" }, -- For luasnip users.
 				}, {
 					{ name = "buffer" },

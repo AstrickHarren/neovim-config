@@ -25,6 +25,11 @@ return {
 		},
 		lazy = false,
 		keys = {},
+		config = function(_, opts)
+			require("Comment").setup(opts)
+            local ft = require("Comment.ft")
+            ft.set("openscad", '//%s')
+		end,
 	},
 
 	{

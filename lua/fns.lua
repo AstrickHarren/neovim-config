@@ -31,3 +31,12 @@ function close_window_checked_alpha()
 		vim.cmd("x")
 	end
 end
+
+function lsp_signs(icons)
+	return {
+		error = { icon = icons.get("x-circle"), hl = "DiagnosticSignError" },
+		warn = { icon = icons.get("alert"), hl = "DiagnosticSignWarn" },
+		info = { icon = icons.get("info"), hl = "DiagnosticSignInfo" },
+		hint = { icon = icons.get("question"), hl = "DiagnosticSignHint" },
+	}
+end

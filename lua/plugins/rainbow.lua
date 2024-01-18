@@ -11,6 +11,7 @@ local rainbow = {
 return {
 	{
 		"HiPhish/rainbow-delimiters.nvim",
+        enabled = false,
 		config = function()
 			local rainbow_delimiters = require("rainbow-delimiters")
 
@@ -38,16 +39,14 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+        enabled = true,
 		dependencies = { "HiPhish/rainbow-delimiters.nvim" },
 		config = function()
-			vim.g.rainbow_delimiters = { highlight = rainbow }
-
 			require("ibl").setup({
-				scope = { highlight = rainbow, char = "▏", show_start = false },
+				scope = {
+					enabled = false,
+				},
 			})
-
-			local hooks = require("ibl.hooks")
-			hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 		end,
 	},
 

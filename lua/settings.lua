@@ -37,8 +37,9 @@ local signs = {
     { name = "DiagnosticSignInfo",  text = icons.get("info") },
 }
 
-for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+local signs = lsp_signs(icons)
+for _, sign in pairs(signs) do
+    vim.fn.sign_define(sign.hl, { texthl = sign.hl, text = sign.icon })
 end
 
 vim.diagnostic.config({

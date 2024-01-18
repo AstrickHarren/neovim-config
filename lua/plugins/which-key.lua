@@ -1,3 +1,26 @@
+local function toggle_profiling()
+	local path = "profile.log"
+
+	if vim.g.profiler_running then
+		-- stop profiling
+		vim.cmd("profile stop")
+		vim.g.profiler_running = false
+		print("Profiling write to " .. path)
+	else
+		-- start profiling
+		vim.cmd("profile start " .. path)
+		vim.cmd("profile func *")
+		vim.cmd("profile file *")
+		vim.g.profiler_running = true
+		print("Profiling started")
+	end
+end
+
+local function toggle_expand_tab()
+	vim.opt.expandtab = not vim.opt.expandtab:get()
+	vim.cmd("%retab!")
+end
+
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
@@ -44,6 +67,14 @@ return {
 					k = "Go to the up window",
 					j = "Go to the down window",
 				},
+				d = {
+					name = "+Debug",
+					p = {
+						toggle_profiling,
+						"Start profiling",
+					},
+					m = { "<cmd>messages<cr>", "Messages" },
+				},
 				[","] = {
 					name = "+Preferences",
 					w = {
@@ -52,11 +83,21 @@ return {
 						end,
 						"Toggle whiteSpace visibility",
 					},
+					t = {
+						toggle_expand_tab,
+						"Toggle expand tab",
+					},
 				},
 			},
 
 			-- ["<c-w>"] = { "<cmd>x<cr>", "Close window" },
 			["<c-w>"] = { close_window_checked_alpha, "Close window" },
+			["<M-s>"] = {
+				function()
+                    vim.lsp.buf.format()
+				end,
+				"Format",
+			},
 		})
 
 		wk.register({

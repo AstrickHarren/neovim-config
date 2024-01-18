@@ -13,6 +13,7 @@ return {
 
 	config = function()
 		local icons = require("nvim-nonicons")
+		local lsp_signs = lsp_signs(icons)
 
 		require("neo-tree").setup({
 			git_status_async = false, -- TODO: revert this after #724 solved
@@ -41,6 +42,20 @@ return {
 					folder_open = "",
 					folder_empty = "",
 					default = "",
+				},
+				diagnostics = {
+					symbols = {
+						hint = lsp_signs.hint.icon,
+						info = lsp_signs.info.icon,
+						warn = lsp_signs.warn.icon,
+						error = lsp_signs.error.icon,
+					},
+					highlights = {
+						hint = lsp_signs.hint.hl,
+						info = lsp_signs.info.hl,
+						warn = lsp_signs.warn.hl,
+						error = lsp_signs.error.hl,
+					},
 				},
 			},
 		})

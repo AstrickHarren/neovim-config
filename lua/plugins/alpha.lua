@@ -23,7 +23,7 @@ return {
 			dashboard.button("l", "󰋚  Load Last Session", "<cmd>NeovimProjectLoadRecent<CR>"),
 			dashboard.button("r", "  Recent Projects", "<cmd>Telescope neovim-project history<CR>"),
 			dashboard.button("p", "  Open Project", "<cmd>Telescope neovim-project discover<CR>"),
-			dashboard.button("c", "  Settings", "<cmd>cd $HOME/.config/nvim | e $MYVIMRC<CR>"),
+			dashboard.button("c", "  Settings", "<cmd>silent cd $HOME/.config/nvim | e $MYVIMRC<CR>"),
 			dashboard.button("q", "󰅚  Quit NVIM", ":qa<CR>"),
 		}
 

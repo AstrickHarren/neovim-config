@@ -1,3 +1,5 @@
+local enabled = true
+
 local text_objs = {
 	f = "function",
 	a = "parameter",
@@ -34,11 +36,13 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		enabled = enabled,
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "lua", "rust" },
 				highlight = {
 					enable = true,
+					disable = { "rust" },
 				},
 				indent = {
 					enable = true,
@@ -50,6 +54,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		depends = { "nvim-treesitter/nvim-treesitter" },
+		enabled = enabled,
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				textobjects = {
@@ -59,6 +64,9 @@ return {
 						keymaps = keymaps,
 					},
 					move = move,
+				},
+				indent = {
+					enabled = false,
 				},
 			})
 
@@ -75,43 +83,5 @@ return {
 			vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
 			vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
 		end,
-	},
-
-	{
-		"kiyoon/treesitter-indent-object.nvim",
-		keys = {
-			{
-				"ai",
-				function()
-					require("treesitter_indent_object.textobj").select_indent_outer()
-				end,
-				mode = { "x", "o" },
-				desc = "Select context-aware indent (outer)",
-			},
-			{
-				"aI",
-				function()
-					require("treesitter_indent_object.textobj").select_indent_outer(true)
-				end,
-				mode = { "x", "o" },
-				desc = "Select context-aware indent (outer, line-wise)",
-			},
-			{
-				"ii",
-				function()
-					require("treesitter_indent_object.textobj").select_indent_inner()
-				end,
-				mode = { "x", "o" },
-				desc = "Select context-aware indent (inner, partial range)",
-			},
-			{
-				"iI",
-				function()
-					require("treesitter_indent_object.textobj").select_indent_inner(true, "V")
-				end,
-				mode = { "x", "o" },
-				desc = "Select context-aware indent (inner, entire range) in line-wise visual mode",
-			},
-		},
 	},
 }
