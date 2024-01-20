@@ -37,6 +37,110 @@ function lsp_signs(icons)
 		error = { icon = icons.get("x-circle"), hl = "DiagnosticSignError" },
 		warn = { icon = icons.get("alert"), hl = "DiagnosticSignWarn" },
 		info = { icon = icons.get("info"), hl = "DiagnosticSignInfo" },
-		hint = { icon = icons.get("question"), hl = "DiagnosticSignHint" },
+		hint = { icon = "", hl = "DiagnosticSignHint" },
 	}
+end
+
+function spinners()
+	local arrows = {
+		"←",
+		"↖",
+		"↑",
+		"↗",
+		"→",
+		"↘",
+		"↓",
+		"↙",
+	}
+
+	local two_cols = {
+		"⢀⠀",
+		"⡀⠀",
+		"⠄⠀",
+		"⢂⠀",
+		"⡂⠀",
+		"⠅⠀",
+		"⢃⠀",
+		"⡃⠀",
+		"⠍⠀",
+		"⢋⠀",
+		"⡋⠀",
+		"⠍⠁",
+		"⢋⠁",
+		"⡋⠁",
+		"⠍⠉",
+		"⠋⠉",
+		"⠋⠉",
+		"⠉⠙",
+		"⠉⠙",
+		"⠉⠩",
+		"⠈⢙",
+		"⠈⡙",
+		"⢈⠩",
+		"⡀⢙",
+		"⠄⡙",
+		"⢂⠩",
+		"⡂⢘",
+		"⠅⡘",
+		"⢃⠨",
+		"⡃⢐",
+		"⠍⡐",
+		"⢋⠠",
+		"⡋⢀",
+		"⠍⡁",
+		"⢋⠁",
+		"⡋⠁",
+		"⠍⠉",
+		"⠋⠉",
+		"⠋⠉",
+		"⠉⠙",
+		"⠉⠙",
+		"⠉⠩",
+		"⠈⢙",
+		"⠈⡙",
+		"⠈⠩",
+		"⠀⢙",
+		"⠀⡙",
+		"⠀⠩",
+		"⠀⢘",
+		"⠀⡘",
+		"⠀⠨",
+		"⠀⢐",
+		"⠀⡐",
+		"⠀⠠",
+		"⠀⢀",
+		"⠀⡀",
+	}
+
+	local function with_brackets(spinner)
+		local ret = {}
+		-- length frame (sometimes lsp-process skips frames)
+		local needs_lengthen = #spinner < 8
+		for _, v in ipairs(spinner) do
+			table.insert(ret, "[" .. v .. "]")
+			if needs_lengthen then
+				table.insert(ret, "[" .. v .. "]")
+			end
+		end
+		return ret
+	end
+
+	local function process(spinners)
+		local ret = {}
+		for k, v in pairs(spinners) do
+			ret[k] = with_brackets(v)
+		end
+		return ret
+	end
+
+	return process({
+		arrows = arrows,
+		two_cols = two_cols,
+		circle_halves = {
+			"◐",
+			"◓",
+			"◑",
+			"◒",
+		},
+	})
 end

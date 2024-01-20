@@ -1,6 +1,6 @@
 return {
 	{ "hrsh7th/cmp-nvim-lsp", opts = {} },
-	{ 'hrsh7th/cmp-path' },
+	{ "hrsh7th/cmp-path" },
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
@@ -101,11 +101,25 @@ return {
 					["<c-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<c-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 				}),
-				sorting = { priority = 10 },
+				sorting = {
+                    comparators = {
+                        -- cmp.config.compare.offset,
+                        -- cmp.config.compare.exact,
+                        -- cmp.config.compare.score,
+                        -- cmp.config.compare.kind,
+                        -- cmp.config.compare.sort_text,
+                        -- cmp.config.compare.length,
+                        -- cmp.config.compare.order,
+                        -- cmp.config.compare.offset,
+                        cmp.config.compare.locality,
+                        cmp.config.compare.recently_used,
+                        cmp.config.compare.order,
+                    }
+                },
 				sources = cmp.config.sources({
-					{ name = "copilot",  priority = 2, max_item_count = 1 },
-					{ name = "nvim_lsp", priority = 10 },
-					{ name = 'path' },
+					{ name = "copilot" },
+					{ name = "nvim_lsp" },
+					{ name = "path" },
 					-- { name = "luasnip" }, -- For luasnip users.
 				}, {
 					{ name = "buffer" },

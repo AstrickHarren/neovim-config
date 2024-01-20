@@ -26,15 +26,23 @@ return {
 	event = "VeryLazy",
 	init = function()
 		vim.o.timeout = true
-		vim.o.timeoutlen = 300
+		vim.o.timeoutlen = 10
 	end,
 	opts = {
-		window = { margin = { 1, 0, 1, 0.8 }, border = "single" },
-		layout = { height = { min = 4, max = 75 } },
+		icons = {
+			separator = "",
+		},
+		window = { margin = { 1, 0, 1, 0.8 }, padding = { 0, 0, 0, 0 }, border = "single" },
+		layout = { height = { min = 4, max = 50 }, align = "right" },
 		plugins = {
 			presets = {
 				windows = false,
 			},
+		},
+		-- not working by now (see https://github.com/folke/which-key.nvim/issues/515)
+		popup_mappings = {
+			scroll_down = "<c-j>",
+			scroll_up = "<c-k>",
 		},
 	},
 	config = function(_, opts)
@@ -89,12 +97,13 @@ return {
 					},
 				},
 			},
+			["<c-k>"] = { name = "+chord" },
 
 			-- ["<c-w>"] = { "<cmd>x<cr>", "Close window" },
 			["<c-w>"] = { close_window_checked_alpha, "Close window" },
 			["<M-s>"] = {
 				function()
-                    vim.lsp.buf.format()
+					vim.lsp.buf.format()
 				end,
 				"Format",
 			},
@@ -109,7 +118,7 @@ return {
 				h = { "0", "First character of line" },
 				s = { "^", "First non-blank character of line" },
 				l = { "g_", "Last character of line" },
-				e = { "G", "Last non-blank character of line" },
+				e = { "G", "Last non-blank character of file" },
 			},
 		})
 	end,

@@ -41,7 +41,7 @@ local on_attach = function(_, _)
     map("n", "]d", function()
         vim.diagnostic.goto_next({ float = { border = "rounded" } })
     end, { desc = "Go to next diagnostic" })
-    map("n", "<c-k>", function()
+    map("n", "Y", function()
         vim.diagnostic.open_float({ float = { border = "rounded" } })
     end, { desc = "Show line diagnostics" })
 end
@@ -67,7 +67,14 @@ local function lsp_servers()
             "rust_analyzer",
             cmd = {
                 "rust-analyzer",
-            }
+            },
+            settings = {
+                ["rust-analyzer"] = {
+                    diagnostics = {
+                        disabled = { "unresolved-proc-macro", "macro-error" },
+                    },
+                },
+            },
         },
         "pest_ls",
         {
@@ -89,7 +96,7 @@ local handlers = {
 }
 
 return {
-    { "williamboman/mason.nvim",           opts = {} },
+    { "williamboman/mason.nvim", opts = {} },
     { "williamboman/mason-lspconfig.nvim", opts = { ensure_installed = { "lua_ls" } } },
     {
         "neovim/nvim-lspconfig",
@@ -113,27 +120,27 @@ return {
         end,
 
         keys = {
-            { "K",          vim.lsp.buf.hover,          desc = "Hover" },
-            { "<c-,>",      vim.lsp.buf.signature_help, desc = "Signature Help",            mode = { "n", "v", "i" } },
-            { "<leader>F",  vim.lsp.buf.format,         desc = "Format" },
+            { "K", vim.lsp.buf.hover, desc = "Hover" },
+            { "<c-,>", vim.lsp.buf.signature_help, desc = "Signature Help", mode = { "n", "v", "i" } },
+            { "<leader>F", vim.lsp.buf.format, desc = "Format" },
             -- { "<c-i>", vim.lsp.inlay_hint.enable, desc = "Inlay hints" },
 
-            -- { "gD",		   vim.lsp.buf.declaration,    desc = "Go to declaration" },
-            -- { "gd",		   vim.lsp.buf.definition,	   desc = "Go to definition" },
-            -- { "gI",		   vim.lsp.buf.implementation,	desc = "Go to implementation" },
-            -- { "gr",		   vim.lsp.buf.references,		desc = "Go to references" },
-            -- { "gt",		   vim.lsp.buf.type_definition, desc = "Go to type definition" },
+            -- { "gD",         vim.lsp.buf.declaration,    desc = "Go to declaration" },
+            -- { "gd",         vim.lsp.buf.definition,     desc = "Go to definition" },
+            -- { "gI",         vim.lsp.buf.implementation,  desc = "Go to implementation" },
+            -- { "gr",         vim.lsp.buf.references,      desc = "Go to references" },
+            -- { "gt",         vim.lsp.buf.type_definition, desc = "Go to type definition" },
 
-            { "<leader>r",  vim.lsp.buf.rename,         desc = "Rename" },
-            { "<leader>lm", "<cmd>Mason<cr>",           desc = "Mason" },
-            { "<leader>ll", "<cmd>LspInfo<cr>",         desc = "LspInfo" },
-            { "<leader>li", "<cmd>Inspect<cr>",         desc = "Inspect token under cursor" },
-            { "<leader>lg", "<cmd>LspInstall<cr>",      desc = "Get Lsp for current file" },
-            { "<leader>ls", "<cmd>LspStart<cr>",        desc = "Start LSP" },
-            { "<leader>lr", "<cmd>LspRestart<cr>",      desc = "Restart LSP" },
-            { "<leader>lq", "<cmd>LspStop<cr>",         desc = "Stop LSP" },
+            { "<leader>r", vim.lsp.buf.rename, desc = "Rename" },
+            { "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" },
+            { "<leader>ll", "<cmd>LspInfo<cr>", desc = "LspInfo" },
+            { "<leader>li", "<cmd>Inspect<cr>", desc = "Inspect token under cursor" },
+            { "<leader>lg", "<cmd>LspInstall<cr>", desc = "Get Lsp for current file" },
+            { "<leader>ls", "<cmd>LspStart<cr>", desc = "Start LSP" },
+            { "<leader>lr", "<cmd>LspRestart<cr>", desc = "Restart LSP" },
+            { "<leader>lq", "<cmd>LspStop<cr>", desc = "Stop LSP" },
 
-            { "<c-.>",      vim.lsp.buf.code_action,    desc = "Code action" },
+            { "<c-.>", vim.lsp.buf.code_action, desc = "Code action" },
         },
     },
 }

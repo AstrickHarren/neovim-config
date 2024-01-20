@@ -27,26 +27,30 @@ vim.opt.showmode = false
 vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"
 vim.opt.splitright = true
 
+-- Fold
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+
 --------- LSP signs ---------
 local icons = require("nvim-nonicons")
 
 local signs = {
-    { name = "DiagnosticSignError", text = icons.get("x-circle") },
-    { name = "DiagnosticSignWarn",  text = icons.get("alert") },
-    { name = "DiagnosticSignHint",  text = icons.get("question") },
-    { name = "DiagnosticSignInfo",  text = icons.get("info") },
+	{ name = "DiagnosticSignError", text = icons.get("x-circle") },
+	{ name = "DiagnosticSignWarn", text = icons.get("alert") },
+	{ name = "DiagnosticSignHint", text = icons.get("question") },
+	{ name = "DiagnosticSignInfo", text = icons.get("info") },
 }
 
 local signs = lsp_signs(icons)
 for _, sign in pairs(signs) do
-    vim.fn.sign_define(sign.hl, { texthl = sign.hl, text = sign.icon })
+	vim.fn.sign_define(sign.hl, { texthl = sign.hl, text = sign.icon })
 end
 
 vim.diagnostic.config({
-    underline = true,
-    severity_sort = true,
-    signs = true,
-    update_in_insert = false,
+	underline = true,
+	severity_sort = true,
+	signs = true,
+	update_in_insert = false,
 })
 
 -- listchars=tab:->,space:.

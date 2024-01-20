@@ -42,13 +42,14 @@ local config = function()
 			readonly = icons.get("lock"),
 		},
 	}
+	local signs = lsp_signs(icons)
 	local diagnostic = {
 		"diagnostics",
 		symbols = {
-			error = icons.get("x-circle") .. " ",
-			info = icons.get("info") .. " ",
-			warn = icons.get("alert") .. " ",
-			hint = icons.get("question") .. " ",
+			error = signs.error.icon .. " ",
+			info = signs.info.icon .. " ",
+			warn = signs.warn.icon .. " ",
+			hint = signs.hint.icon .. " ",
 		},
 	}
 	local mode = { "mode", fmt = mode_fmt, padding = { right = 3, left = 2 } }
@@ -81,7 +82,7 @@ local config = function()
 			-- section_separators = { right = "", left = "" },
 			section_separators = { right = "", left = "" },
 			refresh = {
-				statusline = 200,
+				statusline = 100,
 			},
 			globalstatus = true,
 		},
@@ -115,16 +116,7 @@ return {
 		"linrongbin16/lsp-progress.nvim",
 		opts = {
 			max_size = 80,
-			spinner = {
-				"[←]",
-				"[↖]",
-				"[↑]",
-				"[↗]",
-				"[→]",
-				"[↘]",
-				"[↓]",
-				"[↙]",
-			},
+			spinner = spinners().circle_halves,
 			series_format = function(title, message, percentage, done)
 				local builder = {}
 				local has_title = false
@@ -188,7 +180,7 @@ return {
 
 				if minimal then
 					local ret = {}
-					for cli, perc in pairs(percs) do
+					for _, perc in pairs(percs) do
 						table.insert(ret, perc)
 					end
 					return table.concat(ret, " ")

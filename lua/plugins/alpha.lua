@@ -7,7 +7,7 @@ local function alpha_on_enter_redraw_plugins(dashboard)
 		callback = function()
 			local stats = require("lazy").stats()
 			local footer_val =
-				string.format("󱐋 %d/%d plugins loaded in %.4f ms", stats.loaded, stats.count, stats.startuptime)
+				string.format("󱐋 %d/%d plugins loaded in %.4f ms", stats.loaded, stats.count, stats.times.LazyDone)
 			dashboard.section.footer.val = footer_val
 			pcall(vim.cmd.AlphaRedraw)
 		end,

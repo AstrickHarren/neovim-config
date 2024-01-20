@@ -39,4 +39,5 @@ local function toggle_inlay_hint()
 end
 
 -- map({ "n", "v" }, "<leader>li", toggle_inlay_hint, { desc = "Toggle inlay hints" })
-map({ "i", "n", "v" }, "<c-i>", toggle_inlay_hint, { desc = "Toggle inlay hints" })
+map({ "i", "n", "v" }, "<c-t>", toggle_inlay_hint, { desc = "Toggle inlay hints" })
+map({ "i", "n", "v" }, "<m-k>", toggle_inlay_hint, { desc = "Toggle inlay hints" })
