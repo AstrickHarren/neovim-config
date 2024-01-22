@@ -20,6 +20,12 @@ return {
 			filesystem = {
 				use_libuv_file_watcher = true,
 			},
+			window = {
+				mappings = {
+					["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+					["<c-cr>"] = { "open_vsplit" },
+				},
+			},
 			default_component_configs = {
 				git_status = {
 					symbols = {

@@ -42,7 +42,7 @@ local on_attach = function(_, _)
         vim.diagnostic.goto_next({ float = { border = "rounded" } })
     end, { desc = "Go to next diagnostic" })
     map("n", "Y", function()
-        vim.diagnostic.open_float({ float = { border = "rounded" } })
+        vim.diagnostic.open_float({ border = "rounded" })
     end, { desc = "Show line diagnostics" })
 end
 

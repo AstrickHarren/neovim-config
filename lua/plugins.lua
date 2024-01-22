@@ -6,17 +6,17 @@ return {
 		"akinsho/toggleterm.nvim",
 		opts = { start_in_insert = true, persist_mode = false, shade_terminals = false },
 		keys = {
-			{ "<c-j>", "<cmd>ToggleTerm<cr><esc>" },
-			{ "<c-j>", "<c-\\><c-n><cmd>ToggleTerm<cr>", mode = { "t" } },
-			{ "<c-u>", "<c-\\><c-n><c-u>", mode = { "t" } },
+			{ "<c-j>",		"<cmd>ToggleTerm<cr><esc>" },
+			{ "<c-j>",		"<c-\\><c-n><cmd>ToggleTerm<cr>",			mode = { "t" } },
+			{ "<c-u>",		"<c-\\><c-n><c-u>",							mode = { "t" } },
 
-			{ "<leader>'f", "<cmd>ToggleTerm direction=float<cr>", desc = "Float terminal" },
+			{ "<leader>'f", "<cmd>ToggleTerm direction=float<cr>",		desc = "Float terminal" },
 			{ "<leader>'t", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Bottom terminal" },
-			{ "<leader>'v", "<cmd>ToggleTerm direction=vertical<cr>", desc = "Right terminal" },
+			{ "<leader>'v", "<cmd>ToggleTerm direction=vertical<cr>",	desc = "Right terminal" },
 		},
 	},
 
-	-- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
+	-- add this to your lua/plugins.lua, lua/plugins/init.lua,	or the file you keep your other plugins:
 	{
 		"numToStr/Comment.nvim",
 		opts = {
@@ -64,19 +64,20 @@ return {
 	-- test
 	{
 		"vim-test/vim-test",
+		enabled = false,
 		keys = {
-			{ "<leader>tt", "<cmd>TestFile<cr>", desc = "Test file" },
+			{ "<leader>tt", "<cmd>TestFile<cr>",	desc = "Test file" },
 			{ "<leader>tn", "<cmd>TestNearest<cr>", desc = "Test nearest" },
-			{ "<leader>tl", "<cmd>TestLast<cr>", desc = "Test last run" },
-			{ "<leader>ts", "<cmd>TestSuite<cr>", desc = "Test entire suite" },
-			{ "<leader>tv", "<cmd>TestVisit<cr>", desc = "Test last run in current buffer" },
+			{ "<leader>tl", "<cmd>TestLast<cr>",	desc = "Test last run" },
+			{ "<leader>ts", "<cmd>TestSuite<cr>",	desc = "Test entire suite" },
+			{ "<leader>tv", "<cmd>TestVisit<cr>",	desc = "Test last run in current buffer" },
 		},
 		opts = {},
 		config = function()
 			-- local test = require('test')
-            -- let test#neovim#term_position = "vert"
-            vim.g["test#strategy"] = "neovim"
-            vim.g["test#neovim#term_position"] = "vert"
+			-- let test#neovim#term_position = "vert"
+			vim.g["test#strategy"] = "neovim"
+			vim.g["test#neovim#term_position"] = "vert"
 		end,
 	},
 }
