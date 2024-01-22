@@ -10,9 +10,9 @@ return {
 			{ "<c-j>", "<c-\\><c-n><cmd>ToggleTerm<cr>", mode = { "t" } },
 			{ "<c-u>", "<c-\\><c-n><c-u>", mode = { "t" } },
 
-			{ "<leader>tf", "<cmd>ToggleTerm direction=float<cr>" },
-			{ "<leader>tt", "<cmd>ToggleTerm direction=horizontal<cr>" },
-			{ "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>" },
+			{ "<leader>'f", "<cmd>ToggleTerm direction=float<cr>", desc = "Float terminal" },
+			{ "<leader>'t", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Bottom terminal" },
+			{ "<leader>'v", "<cmd>ToggleTerm direction=vertical<cr>", desc = "Right terminal" },
 		},
 	},
 
@@ -27,8 +27,8 @@ return {
 		keys = {},
 		config = function(_, opts)
 			require("Comment").setup(opts)
-            local ft = require("Comment.ft")
-            ft.set("openscad", '//%s')
+			local ft = require("Comment.ft")
+			ft.set("openscad", "//%s")
 		end,
 	},
 
@@ -60,4 +60,23 @@ return {
 
 	-- dev nvim lua
 	{ "folke/neodev.nvim", opts = {}, dependencies = { "nvim-cmp" } },
+
+	-- test
+	{
+		"vim-test/vim-test",
+		keys = {
+			{ "<leader>tt", "<cmd>TestFile<cr>", desc = "Test file" },
+			{ "<leader>tn", "<cmd>TestNearest<cr>", desc = "Test nearest" },
+			{ "<leader>tl", "<cmd>TestLast<cr>", desc = "Test last run" },
+			{ "<leader>ts", "<cmd>TestSuite<cr>", desc = "Test entire suite" },
+			{ "<leader>tv", "<cmd>TestVisit<cr>", desc = "Test last run in current buffer" },
+		},
+		opts = {},
+		config = function()
+			-- local test = require('test')
+            -- let test#neovim#term_position = "vert"
+            vim.g["test#strategy"] = "neovim"
+            vim.g["test#neovim#term_position"] = "vert"
+		end,
+	},
 }

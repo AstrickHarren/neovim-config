@@ -71,7 +71,7 @@ local function lsp_servers()
             settings = {
                 ["rust-analyzer"] = {
                     diagnostics = {
-                        disabled = { "unresolved-proc-macro", "macro-error" },
+                        -- disabled = { "unresolved-proc-macro", "macro-error" },
                     },
                 },
             },
@@ -140,7 +140,7 @@ return {
             { "<leader>lr", "<cmd>LspRestart<cr>", desc = "Restart LSP" },
             { "<leader>lq", "<cmd>LspStop<cr>", desc = "Stop LSP" },
 
-            { "<c-.>", vim.lsp.buf.code_action, desc = "Code action" },
+            { "<c-.>", vim.lsp.buf.code_action, desc = "Code action", mode = { "n", "i", "v" } },
         },
     },
 }

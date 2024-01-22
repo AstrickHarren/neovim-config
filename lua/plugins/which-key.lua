@@ -53,7 +53,7 @@ return {
 			mode = { "n", "v" },
 			["<leader>"] = {
 				g = { name = "+Git" },
-				t = { name = "+Terminal" },
+				["'"] = { name = "+Terminal" },
 				l = { name = "+Lsp" },
 				L = { "<cmd>Lazy<cr>", "Lazy" },
 				["?"] = { "<cmd>WhichKey<cr>", "Help" },
