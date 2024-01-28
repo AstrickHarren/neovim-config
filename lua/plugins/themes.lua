@@ -76,6 +76,24 @@ return {
 					NeoTreeTitleBar = { fg = colors.text },
 					NeoTreeDirectoryIcon = { fg = colors.overlay0 },
 					NeoTreeDirectoryName = { fg = colors.text },
+
+					-- Neogit
+					NeogitUntrackedfiles = { fg = colors.mauve },
+					NeogitUnstagedchanges = { fg = colors.yellow },
+					NeogitUnpulledchanges = { fg = colors.red },
+					NeogitStagedchanges = { fg = colors.green },
+					NeogitUnmergedInto = { fg = colors.peach },
+
+					NeogitRecentcommits = { fg = colors.none },
+					NeogitStashes = { fg = colors.pink },
+					NeogitChangeModified = { fg = C.blue, style = {"italic"}, },
+					NeogitChangeDeleted = { fg = C.red, style = { "italic" }, },
+					NeogitChangeAdded = { fg = C.green, style = { "italic" }, },
+					NeogitChangeRenamed = { fg = C.mauve, style = { "italic" }, },
+					NeogitChangeUpdated = { fg = C.peach, style = { "italic" }, },
+					NeogitChangeCopied = { fg = C.pink, style = { "italic" }, },
+					NeogitChangeBothModified = { fg = C.yellow, style = { "italic" }, },
+					NeogitChangeNewFile = { fg = C.green, style = { "italic" }, },
 				}
 				return vim.tbl_extend("force", ret, rainbow_colors)
 			end,

@@ -25,9 +25,14 @@ return {
             signs = {
                 -- { CLOSED, OPENED }
                 hunk = { "", "" },
-                item = { "", "" },
+                item = { "", "" },
                 section = { "", "" },
             },
+            sections = {
+                unmerged_upstream = {
+                    folded = true
+                }
+            }
         },
         keys = {
             { "<leader>gg", "<cmd>Neogit<cr>",        desc = "Neogit panel",     mode = { "n", "v" } },

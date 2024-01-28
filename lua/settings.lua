@@ -29,6 +29,7 @@ vim.opt.splitright = true
 
 -- Fold
 vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
 vim.opt.foldenable = false
 
 --------- LSP signs ---------
