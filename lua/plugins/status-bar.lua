@@ -43,7 +43,7 @@ local config = function()
 		},
 	}
 	local signs = lsp_signs(icons)
-	local diagnostic = {
+	local diag = {
 		"diagnostics",
 		symbols = {
 			error = signs.error.icon .. " ",
@@ -51,7 +51,18 @@ local config = function()
 			warn = signs.warn.icon .. " ",
 			hint = signs.hint.icon .. " ",
 		},
+		colored = true,
 	}
+	local workspace_diag = vim.tbl_extend("force", diag, {
+		sections = { "error", "warn" },
+		sources = { "nvim_workspace_diagnostic" },
+		diagnostics_color = {
+			error = { fg = "#51576e" },
+			warn = { fg = "#51576e" },
+		},
+		-- colored = false,
+		always_visible = true,
+	})
 	local mode = { "mode", fmt = mode_fmt, padding = { right = 3, left = 2 } }
 	local branch = { "branch", icon = icons.get("git-compare") }
 	local diff = {
@@ -93,8 +104,8 @@ local config = function()
 	opts.sections = {
 		lualine_a = { mode },
 		lualine_b = { file_name },
-		lualine_c = { branch, diagnostic, lsp_progress },
-		lualine_x = { diff, copilot, filetype },
+		lualine_c = { branch, diag , "%=", workspace_diag },
+		lualine_x = { diff, copilot, filetype},
 		lualine_y = { "progress" },
 		lualine_z = { location, "searchcount" },
 	}
@@ -102,7 +113,7 @@ local config = function()
 	opts.inactive_sections = {
 		lualine_a = { file_name },
 		lualine_b = {},
-		lualine_c = { diagnostic },
+		lualine_c = { diag },
 		lualine_x = {},
 		lualine_y = {},
 		lualine_z = { location },
@@ -114,6 +125,7 @@ end
 return {
 	{
 		"linrongbin16/lsp-progress.nvim",
+		enabled = false,
 		opts = {
 			max_size = 80,
 			spinner = spinners().circle_halves,

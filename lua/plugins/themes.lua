@@ -20,6 +20,7 @@ return {
 			integrations = {
 				treesitter = true,
 				neotree = true,
+				neogit = true,
 				native_lsp = {
 					enabled = true,
 					virtual_text = {
@@ -84,6 +85,12 @@ return {
 	{
 		"olimorris/onedarkpro.nvim",
 		priority = 1000,
-		enabled = false,
+	},
+
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		prirority = 1000,
+		opts = {},
 	},
 }

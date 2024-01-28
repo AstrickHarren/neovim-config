@@ -96,6 +96,7 @@ return {
 						"Toggle expand tab",
 					},
 				},
+				t = { name = "+Test" },
 			},
 			["<c-k>"] = { name = "+chord" },
 

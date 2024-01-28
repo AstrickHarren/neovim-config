@@ -2,6 +2,7 @@
 
 require("fns")
 vim.g.mapleader = " "
+vim.opt.termguicolors = true
 
 ------------------- lazy nvim ---------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

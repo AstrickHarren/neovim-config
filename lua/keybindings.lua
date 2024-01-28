@@ -29,15 +29,14 @@ map({ "n", "v" }, "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 
 -- LSP Inlay hints
 local function toggle_inlay_hint()
-    local buf = vim.api.nvim_get_current_buf()
-    local enabled = vim.lsp.inlay_hint.is_enabled(buf)
-    local n_attached_clients = #vim.lsp.get_clients({ bufnr = buf })
-    if n_attached_clients == 0 then
-        return
-    end
-    vim.lsp.inlay_hint.enable(buf, not enabled)
+	local buf = vim.api.nvim_get_current_buf()
+	local enabled = vim.lsp.inlay_hint.is_enabled(buf)
+	local n_attached_clients = #vim.lsp.get_clients({ bufnr = buf })
+	if n_attached_clients == 0 then
+		return
+	end
+	vim.lsp.inlay_hint.enable(buf, not enabled)
 end
 
 -- map({ "n", "v" }, "<leader>li", toggle_inlay_hint, { desc = "Toggle inlay hints" })
-map({ "i", "n", "v" }, "<c-t>", toggle_inlay_hint, { desc = "Toggle inlay hints" })
 map({ "i", "n", "v" }, "<m-k>", toggle_inlay_hint, { desc = "Toggle inlay hints" })

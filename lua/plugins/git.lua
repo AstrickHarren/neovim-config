@@ -21,7 +21,14 @@ return {
             "sindrets/diffview.nvim", -- optional - Diff integration
             "nvim-telescope/telescope.nvim", -- optional
         },
-        config = true,
+        opts = {
+            signs = {
+                -- { CLOSED, OPENED }
+                hunk = { "", "" },
+                item = { "", "" },
+                section = { "", "" },
+            },
+        },
         keys = {
             { "<leader>gg", "<cmd>Neogit<cr>",        desc = "Neogit panel",     mode = { "n", "v" } },
             { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Git commit panel", mode = { "n", "v" } },
