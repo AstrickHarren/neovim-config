@@ -4,13 +4,17 @@ local M = {
   "nvim-telescope/telescope.nvim",
 
   "windwp/nvim-autopairs",
+  { "j-hui/fidget.nvim", event = "BufRead" },
   { "zbirenbaum/copilot.lua", event = "InsertEnter" },
   { "kylechui/nvim-surround", event = "VeryLazy", config = true },
   { "stevearc/dressing.nvim", event = "VeryLazy", config = true },
 
-  -- git
+  -- Git
   { "NeogitOrg/neogit", config = true },
   "sindrets/diffview.nvim",
+
+  -- Task
+  "stevearc/overseer.nvim",
 
   -- disabled
   { "folke/which-key.nvim", config = false, enabled = false },

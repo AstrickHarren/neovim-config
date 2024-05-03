@@ -99,6 +99,14 @@ M.Quickfix = {
   },
 }
 
+M.Task = {
+  n = {
+    ["<C-r>"] = { find("overseer"):seq(vim_cmd "OverseerRun"), "run task" },
+    ["<M-r>"] = { find("overseer"):seq(vim_cmd "OverseerQuickAction open float"), "open float of last run" },
+    ["<C-S-r>"] = { find("overseer"):of("toggle"):ap(), "open float of last run" },
+  },
+}
+
 local function load_mappings(mappings)
   for mod, mapping in pairs(mappings) do
     for mode, m in pairs(mapping) do
