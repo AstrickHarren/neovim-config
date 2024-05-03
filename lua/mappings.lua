@@ -70,7 +70,7 @@ M.Editor = {
     ["<C-S-w>"] = { vim_cmd "q", "close window" },
     ["<leader>w"] = { "<c-w>", "window cmd" },
     ["<C-s>"] = {
-      find("conform"):of("format"):ap():seq(vim_cmd "w"):only_if(U.filetype:ne "NvimTree"),
+      find("conform"):of("format"):apc({ lsp_fallback = true }):seq(vim_cmd "w"):only_if(U.filetype:ne "NvimTree"),
       "format and save",
     },
 
