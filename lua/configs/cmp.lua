@@ -59,4 +59,19 @@ opts.mapping = {
   end, { "i", "s" }),
 }
 
+local compare = require "utils.comparators"
+
+opts.sorting = {
+  priority_weight = 2,
+  comparators = {
+    compare.recently_used,
+    compare.offset,
+    compare.exact,
+    compare.score,
+    compare.kind,
+    -- compare.length,
+    compare.sort_label,
+  },
+}
+
 cmp.setup(opts)
