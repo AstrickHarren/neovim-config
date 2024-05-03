@@ -42,6 +42,8 @@ lspconfig.lua_ls.setup {
   },
 }
 
+vim.diagnostic.config { severity_sort = true, virtual_text = { prefix = "❚" } }
+
 local U = require "utils"
 local icons = require "icons"
 U.define_lsp_sign(icons.diagnostic_icons)
