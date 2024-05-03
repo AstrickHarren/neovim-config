@@ -10,6 +10,8 @@ local M = {
   { "kylechui/nvim-surround", event = "VeryLazy", config = true },
   { "stevearc/dressing.nvim", event = "VeryLazy", config = true },
 
+  "hrsh7th/nvim-cmp",
+
   -- Git
   { "NeogitOrg/neogit", config = true },
   "sindrets/diffview.nvim",
