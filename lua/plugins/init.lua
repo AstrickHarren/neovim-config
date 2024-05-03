@@ -1,4 +1,4 @@
-local load_plugins = require("loading").load_plugins
+local load_plugins = require("utils.loading").load_plugins
 local M = {
   "stevearc/conform.nvim",
   "neovim/nvim-lspconfig",
