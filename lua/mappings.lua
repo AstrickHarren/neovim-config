@@ -41,6 +41,26 @@ M.Terminal = {
   },
 }
 
+M.Git = {
+  n = {
+    ["<leader>gd"] = { find("diffview"):seq(vim_cmd "DiffviewOpen"), "open diffview" },
+    ["<leader>gh"] = { find("diffview"):seq(vim_cmd "DiffviewFileHistory %"), "open file history" },
+    ["<leader>gg"] = { find("neogit"):of("open"):ap(), "open neogit" },
+    ["<leader>gc"] = { find("neogit"):of("action"):apc("commit", "commit", {}):ap(), "git commit" },
+    ["<leader>gs"] = { find("gitsigns"):of("stage_hunk"):ap(), "stage hunk" },
+    ["<leader>gu"] = { find("gitsigns"):of("undo_stage_hunk"):ap(), "undo stage hunk" },
+    ["<leader>gr"] = { find("gitsigns"):of("reset_hunk"):ap(), "reset hunk" },
+    ["<leader>gp"] = { find("gitsigns"):of("preview_hunk"):ap(), "preview hunk" },
+    ["<leader>gb"] = { find("gitsigns"):of("blame_line"):ap(), "blame line" },
+  },
+}
+
+M.Lazy = {
+  n = {
+    ["<leader>L"] = { vim_cmd "Lazy", "open lazy" },
+  },
+}
+
 M.Editor = {
   n = {
     ["<C-S-/>"] = { vim_cmd "NvCheatsheet", "nvchad cheatsheet" },
