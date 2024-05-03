@@ -5,7 +5,10 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "lua_ls", "rust_analyzer" }
+local servers = { "html", "cssls", "rust_analyzer" }
+
+dofile(vim.g.base46_cache .. "lsp")
+require "nvchad.lsp"
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -16,11 +19,27 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- typescript
-lspconfig.tsserver.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types"] = true,
+          [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
+        },
+        maxPreload = 100000,
+        preloadFileSize = 10000,
+      },
+    },
+  },
 }
 
 local U = require "utils"
