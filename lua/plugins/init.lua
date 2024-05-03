@@ -10,6 +10,7 @@ local M = {
   { "kylechui/nvim-surround", event = "VeryLazy", config = true },
   { "stevearc/dressing.nvim", event = "VeryLazy", config = true },
 
+  { "nvim-tree/nvim-tree.lua", config = "nvim-tree" },
   "hrsh7th/nvim-cmp",
 
   -- Git
