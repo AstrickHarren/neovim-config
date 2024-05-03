@@ -22,3 +22,8 @@ lspconfig.tsserver.setup {
   on_init = on_init,
   capabilities = capabilities,
 }
+
+local U = require "utils"
+local icons = require "icons"
+U.define_lsp_sign(icons.diagnostic_icons)
+U.filter_lsp_by_severity()

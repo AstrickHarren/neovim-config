@@ -1,5 +1,12 @@
 local M = {}
 
+M.diagnostic_icons = {
+  Error = "",
+  Warn = "",
+  Info = "",
+  Hint = "",
+}
+
 M.lsp_icons = {
   Text = "",
   Color = "",
