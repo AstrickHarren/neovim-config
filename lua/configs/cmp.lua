@@ -1,6 +1,7 @@
 local U = require "utils"
 local cmp = require "cmp"
 local opts = require "nvchad.configs.cmp"
+local icons = require "icons"
 
 opts.window.completion.scrollbar = true
 
@@ -8,7 +9,7 @@ opts.formatting = {
   fields = { "kind", "abbr", "menu" },
   format = function(_, item)
     local lsp_icons = require "nvchad.icons.lspkind"
-    -- lsp_icons = vim.tbl_extend("force", lsp_icons, icons.lsp_icons)
+    lsp_icons = vim.tbl_extend("force", lsp_icons, icons.lsp_icons)
     local max_menu_len = 50
     item.kind = lsp_icons[item.kind] .. " "
 
