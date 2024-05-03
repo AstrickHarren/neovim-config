@@ -64,6 +64,7 @@ local compare = require "utils.comparators"
 opts.sorting = {
   priority_weight = 2,
   comparators = {
+    compare.reduce_keywords,
     compare.recently_used,
     compare.offset,
     compare.exact,
