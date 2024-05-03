@@ -78,6 +78,7 @@ M.vim = lift(const(vim))
 M.filetype = M.vim:of("bo"):of "filetype"
 
 M.nop = function() end
+M.const = const
 
 M.vim_cmd = function(cmd)
   return M.vim:of("cmd"):apc(cmd)

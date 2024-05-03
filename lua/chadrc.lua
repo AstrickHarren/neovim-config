@@ -9,6 +9,7 @@ M.ui = {
 
   hl_add = require("highlight").add,
   hl_override = require("highlight").override,
+  statusline = require "configs.statusline",
 }
 
 return M
