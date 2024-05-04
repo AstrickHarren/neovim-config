@@ -57,6 +57,11 @@ local function lift(f)
       end
       return lift(eval)
     end,
+    eq = function(self, value)
+      return lift(function(...)
+        return self.eval(...) == value
+      end)
+    end,
     ne = function(self, value)
       return lift(function(...)
         return self.eval(...) ~= value

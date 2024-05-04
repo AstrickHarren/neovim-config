@@ -25,7 +25,8 @@ M.LSP = {
     ["gm"] = { find("telescope.builtin"):of("lsp_implementations"):ap(), "go to impls" },
     ["Y"] = { U.vim:of("diagnostic"):of("open_float"):apc { border = "rounded" }, "Floating diagnostic" },
     ["<leader>ll"] = { vim_cmd "LspInfo", "lsp info" },
-    ["<leader>r"] = { U.vim:of("lsp"):of("buf"):of("rename"):ap(), "rename" },
+    ["<leader>ra"] = { U.vim:of("lsp"):of("buf"):of("rename"):ap(), "rename" },
+    ["R"] = { U.vim:of("lsp"):of("buf"):of("rename"):ap(), "rename" },
   },
   i = {
     ["<C-,>"] = { U.vim:of("lsp"):of("buf"):of("signature_help"):ap(), "Signature help" },
@@ -38,6 +39,9 @@ M.LSP = {
 M.Terminal = {
   t = {
     ["<C-U>"] = { "<C-\\><C-n><C-U>", "go up half page" },
+  },
+  n = {
+    ["<Esc>"] = { vim_cmd("q"):only_if(U.vim:of("api"):of("nvim_get_mode"):ap():of("mode"):eq "nt"), "close terminal" },
   },
 }
 
