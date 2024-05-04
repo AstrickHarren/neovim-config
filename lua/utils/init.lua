@@ -49,10 +49,12 @@ local function lift(f)
     seq = function(self, other)
       return lift(seq(self.eval, other.eval))
     end,
-    only_if = function(self, cond)
+    only_if = function(self, cond, otherwise)
       local eval = function(...)
         if cond.eval() then
           self.eval(...)
+        elseif otherwise ~= nil then
+          otherwise.eval(...)
         end
       end
       return lift(eval)

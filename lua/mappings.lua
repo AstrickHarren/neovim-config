@@ -41,7 +41,10 @@ M.Terminal = {
     ["<C-U>"] = { "<C-\\><C-n><C-U>", "go up half page" },
   },
   n = {
-    ["<Esc>"] = { vim_cmd("q"):only_if(U.vim:of("api"):of("nvim_get_mode"):ap():of("mode"):eq "nt"), "close terminal" },
+    ["<Esc>"] = {
+      vim_cmd("q"):only_if(U.vim:of("api"):of("nvim_get_mode"):ap():of("mode"):eq "nt", vim_cmd "noh"),
+      "close terminal",
+    },
   },
 }
 
