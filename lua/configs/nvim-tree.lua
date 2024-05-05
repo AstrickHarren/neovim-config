@@ -1,4 +1,3 @@
-local icons = require "icons"
 local opts = require "nvchad.configs.nvimtree"
 
 opts.renderer.highlight_git = false

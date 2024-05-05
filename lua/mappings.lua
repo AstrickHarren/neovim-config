@@ -115,6 +115,15 @@ M.Task = {
   },
 }
 
+M.File = {
+  n = {
+    ["<C-Cr>"] = {
+      find("nvim-tree.api"):of("node"):of("open"):of("vertical"):ap():only_if(U.filetype:eq "NvimTree"),
+      "open in vertical split",
+    },
+  },
+}
+
 local function load_mappings(mappings)
   for mod, mapping in pairs(mappings) do
     for mode, m in pairs(mapping) do
