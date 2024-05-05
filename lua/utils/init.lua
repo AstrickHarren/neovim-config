@@ -165,4 +165,10 @@ M.filter_lsp_by_severity = function()
     end,
   }
 end
+
+M.toggle_inlay_hints = function()
+  local inlay_hint = vim.lsp.inlay_hint
+  inlay_hint.enable(0, not inlay_hint.is_enabled())
+end
+
 return M

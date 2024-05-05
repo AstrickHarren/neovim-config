@@ -33,6 +33,7 @@ M.LSP = {
   },
   [{ "n", "i" }] = {
     ["<C-.>"] = { U.vim:of("lsp"):of("buf"):of("code_action"):ap(), "Code action" },
+    ["<M-k>"] = { U.toggle_inlay_hints, "toggle inlay hints" },
   },
 }
 
@@ -99,7 +100,7 @@ M.Comment = {
 
 M.Quickfix = {
   [{ "n", "v" }] = {
-    ["<M-f>"] = { U.lift(U.toggle_qf), "toggle quick fix" },
+    ["<M-f>"] = { U.toggle_qf, "toggle quick fix" },
     ["<leader>qf"] = { vim_cmd "cw", "open quick fix" },
     ["<leader>qj"] = { vim_cmd "cnext", "next quick fix" },
     ["<leader>qk"] = { vim_cmd "cprev", "prev quick fix" },
@@ -118,7 +119,8 @@ local function load_mappings(mappings)
   for mod, mapping in pairs(mappings) do
     for mode, m in pairs(mapping) do
       for lhs, value in pairs(m) do
-        local rhs = type(value[1]) == "string" and value[1] or value[1].eval
+        local ty = type(value[1])
+        local rhs = (ty == "string" or ty == "function") and value[1] or value[1].eval
         local desc = value[2]
         map(mode, lhs, rhs, { desc = mod .. " " .. desc })
       end
