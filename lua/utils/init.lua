@@ -20,6 +20,16 @@ local function compose(f, g)
 end
 
 local function lift(f)
+  --- @class Applicative
+  --- @field eval function
+  --- @field of fun(self: Applicative, field: string): Applicative
+  --- @field map fun(self: Applicative, g: function): Applicative
+  --- @field ap fun(self: Applicative, ...): Applicative
+  --- @field apc fun(self: Applicative, ...): Applicative
+  --- @field seq fun(self: Applicative, other: Applicative): Applicative
+  --- @field only_if fun(self: Applicative, cond: Applicative, otherwise?: Applicative): Applicative
+  --- @field eq fun(self: Applicative, value: any): Applicative
+  --- @field ne fun(self: Applicative, value: any): Applicative
   return {
     eval = f,
     map = function(self, g)
