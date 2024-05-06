@@ -60,6 +60,12 @@ M.Git = {
     ["<leader>gr"] = { find("gitsigns"):of("reset_hunk"):ap(), "reset hunk" },
     ["<leader>gp"] = { find("gitsigns"):of("preview_hunk"):ap(), "preview hunk" },
     ["<leader>gb"] = { find("gitsigns"):of("blame_line"):ap(), "blame line" },
+
+    -- TODO: seems this is only needed b/c diffview somehow doesn't close on q if there is nothing to diff
+    ["q"] = {
+      find("diffview"):seq(vim_cmd "DiffviewClose"):only_if(U.filename:matches "diffview", U.feedkeys "q"),
+      "close diffview",
+    },
   },
 }
 

@@ -13,9 +13,14 @@ local function seq(f, g)
   end
 end
 
-local function compose(f, g)
+local function compose(...)
+  local fns = { ... }
   return function(...)
-    return g(f(...))
+    local ret = fns[1](...)
+    for i = 2, #fns do
+      ret = fns[i](ret)
+    end
+    return ret
   end
 end
 
@@ -30,6 +35,7 @@ local function lift(f)
   --- @field only_if fun(self: Applicative, cond: Applicative, otherwise?: Applicative): Applicative
   --- @field eq fun(self: Applicative, value: any): Applicative
   --- @field ne fun(self: Applicative, value: any): Applicative
+  --- @field matches fun(self: Applicative, pattern: string): Applicative
   return {
     eval = f,
     map = function(self, g)
@@ -79,6 +85,12 @@ local function lift(f)
         return self.eval(...) ~= value
       end)
     end,
+    matches = function(self, pattern)
+      return lift(function(...)
+        local ret = self.eval(...)
+        return ret:find(pattern) ~= nil
+      end)
+    end,
   }
 end
 
@@ -93,9 +105,13 @@ end
 M.vim = lift(const(vim))
 
 M.filetype = M.vim:of("bo"):of "filetype"
+M.filename = M.vim:of("fn"):of("expand"):apc "%"
 
-M.nop = function() end
 M.const = const
+M.nop = function() end
+M.feedkeys = function(...)
+  return M.vim:of("api"):of("nvim_feedkeys"):apc(..., "n", true)
+end
 
 M.vim_cmd = function(cmd)
   return M.vim:of("cmd"):apc(cmd)
