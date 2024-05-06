@@ -42,7 +42,16 @@ lspconfig.lua_ls.setup {
   },
 }
 
-vim.diagnostic.config { severity_sort = true, virtual_text = { prefix = "❚" } }
+local headline = function(diagnostic)
+  local msg = diagnostic.message
+  local line_break = msg:find "\n"
+  if line_break then
+    return msg:sub(1, line_break - 1)
+  end
+  return msg
+end
+
+vim.diagnostic.config { severity_sort = true, virtual_text = { prefix = "❚", format = headline } }
 
 local U = require "utils"
 local icons = require "icons"
