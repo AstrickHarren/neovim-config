@@ -124,6 +124,12 @@ M.File = {
   },
 }
 
+M.Other = {
+  n = {
+    ["<leader>v"] = { vim_cmd("TypstPreviewToggle"):only_if(U.filetype:eq "typst"), "Open Preview" },
+  },
+}
+
 local function load_mappings(mappings)
   for mod, mapping in pairs(mappings) do
     for mode, m in pairs(mapping) do

@@ -20,6 +20,9 @@ local M = {
   -- Task
   "stevearc/overseer.nvim",
 
+  -- Others
+  { "chomosuke/typst-preview.nvim", ft = "typst", config = false },
+
   -- disabled
   { "folke/which-key.nvim", config = false, enabled = false },
 }
