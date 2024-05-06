@@ -1,16 +1,20 @@
 local load_plugins = require("utils.loading").load_plugins
 local M = {
-  "stevearc/conform.nvim",
-  "neovim/nvim-lspconfig",
-  "nvim-telescope/telescope.nvim",
-
+  -- Editing
   "windwp/nvim-autopairs",
-  { "j-hui/fidget.nvim", event = "BufRead" },
-  { "zbirenbaum/copilot.lua", event = "InsertEnter" },
   { "kylechui/nvim-surround", event = "VeryLazy", config = true },
+
+  -- Navigation
+  "nvim-telescope/telescope.nvim",
+  { "nvim-tree/nvim-tree.lua", config = "nvim-tree" },
+
+  -- UI
+  { "j-hui/fidget.nvim", event = "BufRead" },
   { "stevearc/dressing.nvim", event = "VeryLazy", config = true },
 
-  { "nvim-tree/nvim-tree.lua", config = "nvim-tree" },
+  -- Lsp
+  "neovim/nvim-lspconfig",
+  "stevearc/conform.nvim",
   "hrsh7th/nvim-cmp",
 
   -- Git
@@ -20,10 +24,13 @@ local M = {
   -- Task
   "stevearc/overseer.nvim",
 
-  -- Others
+  -- Copilot
+  { "zbirenbaum/copilot.lua", event = "InsertEnter" },
+
+  -- Language Specifics
   { "chomosuke/typst-preview.nvim", ft = "typst", config = false },
 
-  -- disabled
+  -- Disabled
   { "folke/which-key.nvim", config = false, enabled = false },
 }
 
