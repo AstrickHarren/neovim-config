@@ -26,6 +26,7 @@ local M = {
 
   -- Copilot
   { "zbirenbaum/copilot.lua", event = "InsertEnter" },
+  { "jonahgoldwastaken/copilot-status.nvim", event = "BufReadPost", config = "copilot-status" },
 
   -- Language Specifics
   { "chomosuke/typst-preview.nvim", ft = "typst", config = false },

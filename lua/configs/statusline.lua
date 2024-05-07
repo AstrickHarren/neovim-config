@@ -43,13 +43,17 @@ modules.workspace_diagnostics = function()
   return " " .. e .. w .. h .. i
 end
 
+modules.copilot_status = function()
+  return "  " .. require("copilot_status").status_string() .. "  "
+end
+
 modules.cursor = function()
   return "%#St_White# %l:%c "
 end
 
 return {
   -- more opts
-  order = { "mode", "file", "git", "workspace_diagnostics", "%=", "diagnostics", "cwd", "cursor" },
+  order = { "mode", "file", "git", "copilot_status", "%=", "workspace_diagnostics", "diagnostics", "cwd", "cursor" },
   theme = "vscode_colored",
   modules = modules,
 }
