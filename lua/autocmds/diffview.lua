@@ -8,7 +8,6 @@ end
 local callback = function()
   local theme = require("base46").get_theme_tb "type"
   local load_hls = require("utils.loading").load_hls
-  print "Loading diffview colors..."
   load_hls(hl(theme))
 end
 
