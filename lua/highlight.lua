@@ -19,9 +19,6 @@ M.override = {
 
   DiffChange = { bg = "one_bg", fg = "NONE" },
   DiffText = { bg = "one_bg3", fg = "NONE" },
-
-  DiagnosticWarn = { fg = "#8B8000" },
-  DiagnosticHint = { fg = "#7B68EE" },
 }
 
 ---@type HLTable
@@ -33,10 +30,6 @@ M.add = {
   NeogitDiffDeleteHighlight = { link = "DiffDelete" },
   DiffviewDiffAddAsDelete = { fg = "NONE", bg = "#400000" },
 
-  DiagnosticInfo = { fg = "#7B68EE" },
-  DiagnosticFloatingHint = { fg = "#CF9FFF" },
-  DiagnosticFloatingWarn = { fg = "#ebcb8b" },
-  DiagnosticFloatingInfo = { fg = "#CF9FFF" },
   qfError = { link = "ErrorMsg" },
 }
 
