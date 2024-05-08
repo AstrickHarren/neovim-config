@@ -17,10 +17,6 @@ M.override = {
   NvimTreeOpenedFolderName = { fg = "#dabcff", bold = true },
   NormalFloat = { bg = "NONE" },
 
-  -- Light theme green: #dafbe1
-  -- Light theme red: #ffebe9
-  DiffAdd = { bg = "#273732", fg = "NONE" },
-  DiffDelete = { bg = "#3F2D32", fg = "NONE" },
   DiffChange = { bg = "one_bg", fg = "NONE" },
   DiffText = { bg = "one_bg3", fg = "NONE" },
 

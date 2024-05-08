@@ -29,4 +29,10 @@ M.load_plugins = function(repos)
   return plugins
 end
 
+M.load_hls = function(hl)
+  for group, colors in pairs(hl) do
+    vim.api.nvim_set_hl(0, group, colors)
+  end
+end
+
 return M
