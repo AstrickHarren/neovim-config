@@ -130,6 +130,18 @@ M.File = {
   },
 }
 
+M.Command = {
+  c = {
+    ["<C-a>"] = { "<Home>", "go to start" },
+    ["<C-e>"] = { "<End>", "go to end" },
+    ["<C-f>"] = { "<Right>", "go left" },
+    ["<C-b>"] = { "<Left>", "go right" },
+    ["<M-b>"] = { "<S-Left>", "go to prev word" },
+    ["<M-f>"] = { "<S-Right>", "go to next word" },
+    -- ["<C-s>"] = { "<C-f>", "search history" }, -- TODO: currently conflict with autoread's autocmd
+  },
+}
+
 M.Other = {
   n = {
     ["<leader>v"] = { vim_cmd("TypstPreviewToggle"):only_if(U.filetype:eq "typst"), "Open Preview" },
