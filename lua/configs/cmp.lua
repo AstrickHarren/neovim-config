@@ -69,11 +69,11 @@ opts.sorting = {
   comparators = {
     compare.reduce_keywords,
     compare.recently_used,
-    compare.offset,
+    -- compare.offset,
     compare.exact,
     compare.score,
     compare.kind,
-    -- compare.length,
+    compare.length,
     compare.sort_label,
   },
 }
