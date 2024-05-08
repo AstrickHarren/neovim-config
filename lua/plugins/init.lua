@@ -7,6 +7,7 @@ local M = {
   -- Navigation
   "nvim-telescope/telescope.nvim",
   { "nvim-tree/nvim-tree.lua", config = "nvim-tree" },
+  { "coffebar/neovim-project", dependencies = "Shatur/neovim-session-manager", config = "neovim-project" },
 
   -- UI
   { "j-hui/fidget.nvim", event = "BufRead" },

@@ -10,6 +10,7 @@ M.Telescope = {
   n = {
     ["<C-f>"] = { find("telescope.builtin"):of("find_files"):ap(), "find files" },
     ["<C-g>"] = { find("telescope.builtin"):of("live_grep"):ap(), "live grep" },
+    ["<C-p>"] = { find("telescope"):of("extensions"):of("neovim-project"):of("discover"):ap(), "search projects" },
     ["<leader>fc"] = { find("telescope.builtin"):of("highlights"):ap(), "find highlights" },
     ["<leader>fj"] = { find("telescope.builtin"):of("jumplist"):ap(), "search jumplist" },
     ["<leader>fs"] = { find("telescope.builtin"):of("lsp_dynamic_workspace_symbols"):ap(), "go to workspace symbols" },
