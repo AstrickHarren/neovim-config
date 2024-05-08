@@ -17,10 +17,12 @@ M.override = {
   NvimTreeOpenedFolderName = { fg = "#dabcff", bold = true },
   NormalFloat = { bg = "NONE" },
 
-  DiffAdd = { bg = "#003500", fg = "NONE" },
-  DiffDelete = { bg = "#400000", fg = "NONE" },
-  DiffChange = { bg = "#271344", fg = "NONE" },
-  DiffText = { bg = "#434C5E", fg = "NONE" },
+  -- Light theme green: #dafbe1
+  -- Light theme red: #ffebe9
+  DiffAdd = { bg = "#273732", fg = "NONE" },
+  DiffDelete = { bg = "#3F2D32", fg = "NONE" },
+  DiffChange = { bg = "one_bg", fg = "NONE" },
+  DiffText = { bg = "one_bg3", fg = "NONE" },
 
   DiagnosticWarn = { fg = "#8B8000" },
   DiagnosticHint = { fg = "#7B68EE" },
