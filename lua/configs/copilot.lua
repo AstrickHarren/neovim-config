@@ -1,5 +1,9 @@
+local U = require "utils"
+
 local opts = {
   filetypes = {
+    -- disable for .env files
+    sh = U.filename:matches("^%.env.*"):eq(false).eval,
     markdown = true,
   },
   suggestion = {
