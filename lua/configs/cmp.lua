@@ -18,9 +18,6 @@ opts.formatting = {
       item.menu = U.string_trim(item.menu)
     end
 
-    -- dedup items from all sources
-    item.dup = 0
-
     return item
   end,
 }
