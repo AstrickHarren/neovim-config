@@ -5,6 +5,7 @@ local find = U.find
 local vim_cmd = U.vim_cmd
 local M = {}
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 
 M.Telescope = {
   n = {
@@ -40,7 +41,9 @@ M.LSP = {
 
 M.Terminal = {
   t = {
-    ["<C-U>"] = { "<C-\\><C-n><C-U>", "go up half page" },
+    ["<C-u>"] = { "<C-\\><C-n><C-u>", "go up half page" },
+    ["<C-h>"] = { vim_cmd "wincmd h", "go to left panel" },
+    ["<ESC>"] = { "<C-\\><C-n>", "go to terminal normal mode" },
   },
   n = {
     ["<Esc>"] = {
@@ -149,14 +152,25 @@ M.Other = {
   },
 }
 
+M.disabled = {
+  n = {
+    ["<C-w>d"] = {},
+    ["<C-w><C-d>"] = {},
+  },
+}
+
 local function load_mappings(mappings)
   for mod, mapping in pairs(mappings) do
     for mode, m in pairs(mapping) do
       for lhs, value in pairs(m) do
-        local ty = type(value[1])
-        local rhs = (ty == "string" or ty == "function") and value[1] or value[1].eval
-        local desc = value[2]
-        map(mode, lhs, rhs, { desc = mod .. " " .. desc })
+        if #value == 0 then
+          unmap(mode, lhs)
+        else
+          local ty = type(value[1])
+          local rhs = (ty == "string" or ty == "function") and value[1] or value[1].eval
+          local desc = value[2]
+          map(mode, lhs, rhs, { desc = mod .. " " .. desc })
+        end
       end
     end
   end
