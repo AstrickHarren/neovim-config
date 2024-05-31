@@ -10,12 +10,29 @@ local servers = { "html", "cssls", "rust_analyzer", "typst_lsp" }
 dofile(vim.g.base46_cache .. "lsp")
 require "nvchad.lsp"
 
+local border = {
+  { "╭", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "╮", "FloatBorder" },
+  { "│", "FloatBorder" },
+  { "╯", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "╰", "FloatBorder" },
+  { "│", "FloatBorder" },
+}
+
+local handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
+    handlers = handlers,
   }
 end
 
@@ -23,6 +40,7 @@ lspconfig.lua_ls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
+  handlers = handlers,
   settings = {
     Lua = {
       diagnostics = {
@@ -51,7 +69,10 @@ local headline = function(diagnostic)
   return msg
 end
 
-vim.diagnostic.config { severity_sort = true, virtual_text = { prefix = "❚", format = headline } }
+vim.diagnostic.config {
+  severity_sort = true,
+  virtual_text = { prefix = "❚", format = headline },
+}
 
 local U = require "utils"
 local icons = require "icons"
