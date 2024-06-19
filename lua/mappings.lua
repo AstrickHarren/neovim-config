@@ -94,6 +94,12 @@ M.Editor = {
 
     ["U"] = { "<c-r>", "redo" },
   },
+  [{ "n", "x", "o", "v" }] = {
+    ["ge"] = { "G", "go to the end" },
+    ["gs"] = { "_", "go to the end of line" },
+    ["gl"] = { "$", "go to the end of line" },
+    ["gh"] = { "0", "go to the start of line" },
+  },
 }
 
 M.Comment = {
