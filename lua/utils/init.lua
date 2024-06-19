@@ -150,10 +150,15 @@ M.toggle_qf = function()
 end
 
 M.define_lsp_sign = function(icons)
-  for key, sign in pairs(icons) do
-    key = "DiagnosticSign" .. key
-    vim.fn.sign_define(key, { text = sign })
-  end
+  local diagnostic_icons = {
+    [vim.diagnostic.severity.ERROR] = icons.Error,
+    [vim.diagnostic.severity.WARN] = icons.Warn,
+    [vim.diagnostic.severity.INFO] = icons.Info,
+    [vim.diagnostic.severity.HINT] = icons.Hint,
+  }
+  vim.diagnostic.config { signs = {
+    text = diagnostic_icons,
+  } }
 end
 
 M.filter_lsp_by_severity = function()
